@@ -1,7 +1,7 @@
 # CO-nscious
 CO₂nscious is an app, Encouraging conscious, eco-friendly choices.
 
-## Instroduction
+## Introduction
 - CO₂nsious Because every choice matters, it is your partner in making thoughtful, eco-conscious decisions at work. With personalized tips and practical tools, it's easier than ever to live sustainably and reduce your carbon footprint in the workplace.
 - Live consciously with CO₂nsious. From small steps to big changes in your working lifestyle, our App can help guide your choices in your efforts to protect and improve you and your colleagues' health, your company's culture and ultimately the future of the planet. Start your journey with us here today!
 
@@ -26,3 +26,39 @@ CO₂nscious is an app, Encouraging conscious, eco-friendly choices.
  ## CTA ( Call to Action ):
  ## "Join the movement! Start Logging Your choices Today"
  (button feature) # "Let's Go!
+
+Shared user page for non-logged in users:
+    A link/button to a carbon-saving measure of the week.  Blurb?
+    Advertises award/prize for quarter
+    
+    User sees list of suggestions of carbon-saving measures, with a special one chosen to be accented for this week.
+    
+    A login button.
+
+    Two user stories from log in on:
+
+        Login for either:
+        Employer (handles user registration, chooses measure of the week, can see ranking, allocates awards/prizes, advertises prize for quarter)
+        Employee
+
+
+        Employee user story.
+
+        Employee sees a homepage on which she sees current state of play (measured by points accumulating quarterly) for
+            Themselves personally
+            Their team
+            Their dept
+            Company-wide
+
+ 
+            A link/button to record a carbon-saving measure taken.
+
+            Goes to a page that lists pre-defined carbon-saving measures
+                e.g.:
+                Arrived by bike (gives me 20 points)
+                Arrived by public transport (gives me 10 points)
+                Arrived through car-sharing (gives me 5 points)
+
+            Employee clicks on one of the options and is taken back to the logged-in homepage
+
+
