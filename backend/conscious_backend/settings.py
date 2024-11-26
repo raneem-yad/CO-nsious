@@ -24,6 +24,45 @@ from django.conf.global_settings import ALLOWED_HOSTS
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
+# auth-token configurations
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        (
+            "rest_framework.authentication.SessionAuthentication"
+            if "DEVELOPMENT" in os.environ
+            else "dj_rest_auth.jwt_auth.JWTCookieAuthentication"
+        )
+    ],
+    # "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
+    # "PAGE_SIZE": 6,
+    # "DATETIME_FORMAT": "%d %b %Y",
+}
+if "DEVELOPMENT" not in os.environ:
+    REST_FRAMEWORK["DEFAULT_RENDERER_CLASSES"] = [
+        "rest_framework.renderers.JSONRenderer",
+    ]
+REST_USE_JWT = True
+JWT_AUTH_SECURE = True
+JWT_AUTH_COOKIE = "my-app-auth"
+JWT_AUTH_REFRESH_COOKIE = "my-refresh-token"
+JWT_AUTH_SAMESITE = "None"
+
+# all auth settings (Account Setup)
+ACCOUNT_AUTHENTICATION_METHOD = "email"
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_EMAIL_VERIFICATION = "none"
+ACCOUNT_USERNAME_MIN_LENGTH = 4
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None  # Set if you don't want a username field
+ACCOUNT_UNIQUE_EMAIL = True
+LOGIN_URL = "/accounts/login/"
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/"
+
+CORS_ORIGIN_WHITELIST = [
+    "http://localhost:3000",
+]
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
@@ -63,8 +102,17 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 
-    #Custom
+    # Third-party apps
     'rest_framework',
+    'rest_framework.authtoken',  # Required for token authentication
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',  # Optional, for social authentication
+    'dj_rest_auth',
+
+    "django.contrib.sites",
+    "dj_rest_auth.registration"
+
 ]
 
 MIDDLEWARE = [
@@ -75,6 +123,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'allauth.account.middleware.AccountMiddleware'
 ]
 
 ROOT_URLCONF = "conscious_backend.urls"
@@ -96,7 +145,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "conscious_backend.wsgi.application"
-
+SITE_ID = 1
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
