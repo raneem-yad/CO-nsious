@@ -36,22 +36,21 @@ Shared user page for non-logged in users:
 
 - A login button.
 
--- Two user stories from log in on:
-
---- Login for either:
----- Employer (handles user registration, chooses measure of the week, can see ranking, allocates awards/prizes, advertises prize for quarter)
----- Employee (main user)
+    - Two user stories from log in on:
+        - Login for either:
+            - Employer (handles user registration, chooses measure of the week, can see ranking, allocates awards/prizes, advertises prize for quarter)
+            - Employee (the main user)
 
 
 Employee user story.
 
 - Employee sees a homepage on which she sees current state of play (measured by points accumulating quarterly) for:
     - Themselves personally
-    - Their team
-    - Their dept
+    - Their team (?)
+    - Their dept (?)
     - Company-wide
 
-- A link/button to record a carbon-saving measure taken. This button takes the user to a a page that offers a button to record carbon-saving measures taken (in transport). It provides a list of transport-related carbon-saving measure(e.g.):
+- A link/button to record a carbon-saving measure taken. This button takes the user to a page that offers a button to record carbon-saving measures taken (in transport). It provides a list of transport-related carbon-saving measure (e.g.):
     - Arrived by bike (gives me 20 points)
     - Arrived by public transport (gives me 10 points)
     - Arrived through car-sharing (gives me 5 points)
