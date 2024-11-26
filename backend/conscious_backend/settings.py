@@ -65,6 +65,7 @@ INSTALLED_APPS = [
 
     #Custom
     'rest_framework',
+    'co2measures',
 ]
 
 MIDDLEWARE = [
