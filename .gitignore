@@ -2,7 +2,6 @@ backend/venv
 
 
 
-
 #gitpod
 backend/core.Microsoft*
 backend/core.mongo*
