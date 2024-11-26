@@ -1,2 +1,2 @@
-# CO-nsious
-CO₂nsious is an app, Encouraging conscious, eco-friendly choices.
+# CO-nscious
+CO₂nscious is an app, Encouraging conscious, eco-friendly choices.
