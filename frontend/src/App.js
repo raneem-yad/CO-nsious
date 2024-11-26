@@ -1,26 +1,27 @@
+import { Navigate, Route, Routes } from 'react-router-dom'
 import './App.css';
-
-function Header() {
-  return (
-    <header>
-      <h2>Header</h2>
-      </header>
-    );
-}
-  
-function Footer() {
-  return (
-    <footer>
-      <h2>Footer</h2>
-    </footer>
-  );
-}
+import { Navbar } from './components/NavBar';
+import Header from './components/Header';
+import LoginPage from './components/LoginPage';
+import AboutPage from './components/AboutPage';
+import Footer from './components/Footer';
+import HomePage from './components/HomePage';
 
 function App() {
   return (
     <>
+      <h1>MainApp</h1>
+      <hr />
       <Header />
-      <h1>Hello World</h1>
+
+      <Navbar />
+      <hr />
+      <Routes>
+        <Route path='/' element={<HomePage />} />
+        <Route path='login' element={<LoginPage />} />
+        <Route path='about' element={<AboutPage />} />
+        <Route path='*' element={<Navigate to='/about' />} />
+      </Routes>
       <Footer />
     </>
   );
