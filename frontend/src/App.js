@@ -19,6 +19,7 @@ function App() {
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='login' element={<LoginPage />} />
+        <Route path='singup' element={<LoginPage />} />
         <Route path='about' element={<AboutPage />} />
         <Route path='*' element={<Navigate to='/about' />} />
       </Routes>
