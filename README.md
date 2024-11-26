@@ -53,12 +53,18 @@ Shared user page for non-logged in users:
  
             A link/button to record a carbon-saving measure taken.
 
-            Goes to a page that lists pre-defined carbon-saving measures
-                e.g.:
+            Arrives at a page that offers a button to record carbon-saving measures taken (in transport) and gives another button to allow the user to record energy-saving suggestions (in the categories of Transport, Waste reduction and Energy saving)
+                
+
+            The first button provides a list of transport-related carbon-saving measures.
+                (e.g.):
                 Arrived by bike (gives me 20 points)
                 Arrived by public transport (gives me 10 points)
                 Arrived through car-sharing (gives me 5 points)
 
-            Employee clicks on one of the options and is taken back to the logged-in homepage
+                Employee clicks on one of the options and is taken back to the logged-in homepage.
+
+            The second, suggestion, button, allows the user to describe their carbon-reduction measure via a name and text descriptions.
+
 
 
