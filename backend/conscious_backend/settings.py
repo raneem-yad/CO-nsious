@@ -33,9 +33,9 @@ REST_FRAMEWORK = {
             else "dj_rest_auth.jwt_auth.JWTCookieAuthentication"
         )
     ],
-    # "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
-    # "PAGE_SIZE": 6,
-    # "DATETIME_FORMAT": "%d %b %Y",
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
+    "PAGE_SIZE": 6,
+    "DATETIME_FORMAT": "%d %b %Y",
 }
 if "DEVELOPMENT" not in os.environ:
     REST_FRAMEWORK["DEFAULT_RENDERER_CLASSES"] = [
@@ -47,14 +47,18 @@ JWT_AUTH_COOKIE = "my-app-auth"
 JWT_AUTH_REFRESH_COOKIE = "my-refresh-token"
 JWT_AUTH_SAMESITE = "None"
 
+REST_AUTH_SERIALIZERS = {
+    'USER_DETAILS_SERIALIZER': 'conscious_backend.serializers.CurrentUserSerializer'
+}
+
 # all auth settings (Account Setup)
-ACCOUNT_AUTHENTICATION_METHOD = "email"
-ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = "username"
+ACCOUNT_EMAIL_REQUIRED = False
+# ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_EMAIL_VERIFICATION = "none"
+# ACCOUNT_USER_MODEL_USERNAME_FIELD = None  # Set if you don't want a username field
+ACCOUNT_UNIQUE_USERNAME = True
 ACCOUNT_USERNAME_MIN_LENGTH = 4
-ACCOUNT_USER_MODEL_USERNAME_FIELD = None  # Set if you don't want a username field
-ACCOUNT_UNIQUE_EMAIL = True
 LOGIN_URL = "/accounts/login/"
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
@@ -101,6 +105,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'drf_yasg',
+    'corsheaders',
 
     # Third-party apps
     'rest_framework',
@@ -110,8 +116,9 @@ INSTALLED_APPS = [
     'allauth.socialaccount',  # Optional, for social authentication
     'dj_rest_auth',
 
+
     "django.contrib.sites",
-    "dj_rest_auth.registration"
+    "dj_rest_auth.registration",
 
 ]
 
@@ -123,6 +130,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'corsheaders.middleware.CorsMiddleware',
     'allauth.account.middleware.AccountMiddleware'
 ]
 
@@ -146,6 +154,25 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "conscious_backend.wsgi.application"
 SITE_ID = 1
+
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.herokuapp.com",
+    "https://*.gitpod.io",
+    "http://192.168.0.108/:3000",
+    "http://127.0.0.1:8000/",
+]
+
+if "CLIENT_ORIGIN" in os.environ:
+    CORS_ALLOWED_ORIGINS = [os.environ.get("CLIENT_ORIGIN")]
+if "CLIENT_ORIGIN_DEV" in os.environ:
+    CORS_ALLOWED_ORIGINS = [
+        os.environ.get("CLIENT_ORIGIN_DEV"),
+        os.environ.get("CLIENT_ORIGIN"),
+    ]
+
+CORS_ALLOW_CREDENTIALS = True
+
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
