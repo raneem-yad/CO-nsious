@@ -4,6 +4,7 @@ export const Navbar = () => {
     <>
       <Link to='/'>Home</Link>
       <Link to='/login'>Login</Link>
+      <Link to='/singup'>Sign Up</Link>
       <Link to='/about'>About</Link>
     </>
   )
