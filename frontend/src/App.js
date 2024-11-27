@@ -19,21 +19,17 @@ function App() {
       
       <div className='App'>
         <Navbar />
-        <div className='auth-wrapper'>
-          <div className='auth-inner'>
-            <Routes>
-              <Route path='/' element={<HomePage />} />
-              <Route path='login' element={<LoginPage />} />
-              <Route path='signup' element={<SignUp />} />
-              <Route path='logout' element={<LogOut />} />
-              <Route path='about' element={<AboutPage />} />
-              <Route path='dashboard' element={<Dashboard />} />
-              <Route path='profile' element={<Profile />} />
-              <Route path='actions' element={<Actions />} />
-              <Route path='*' element={<Navigate to='/about' />} />
-            </Routes>
-          </div>
-        </div>
+        <Routes>
+          <Route path='/' element={<HomePage />} />
+          <Route path='login' element={<LoginPage />} />
+          <Route path='signup' element={<SignUp />} />
+          <Route path='logout' element={<LogOut />} />
+          <Route path='about' element={<AboutPage />} />
+          <Route path='dashboard' element={<Dashboard />} />
+          <Route path='profile' element={<Profile />} />
+          <Route path='actions' element={<Actions />} />
+          <Route path='*' element={<Navigate to='/about' />} />
+        </Routes>
       </div>
       <Footer />
     </UserProvider>
