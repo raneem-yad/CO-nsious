@@ -11,10 +11,8 @@ class EmployeeProfile(models.Model):
     total_points = models.IntegerField(default=0, validators=[MinValueValidator(0)])
 
     def __str__(self):
-        return self.user.username
-
-    @receiver(post_save, sender=Action)
+        return self.employee.username
+        
     def update_employee_points(sender, instance, created, **kwargs):
-        if created:
-            profile = instance.employee.employeeprofile
-            profile.update_points(instance.points_awarded)
+        self.total_points += points
+        self.save()

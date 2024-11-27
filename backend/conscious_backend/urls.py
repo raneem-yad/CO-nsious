@@ -21,5 +21,7 @@ from django.urls import path, include
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("api-auth/", include("rest_framework.urls")),
-    path('api/', include('co2measures.urls')), # Required for REST apis using ListCreateAPIView 
+    path('measures/', include('co2measures.urls')), # Required for REST apis using ListCreateAPIView 
+    path('action/', include('action.urls')),
+    path('employeeprofile/', include('employeeprofile.urls')),
 ]
