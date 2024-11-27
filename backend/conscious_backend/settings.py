@@ -123,17 +123,10 @@ INSTALLED_APPS = [
     "dj_rest_auth",
     "django.contrib.sites",
     "dj_rest_auth.registration",
-<<<<<<< HEAD
-    "co2measures",
-    "action",
-    "employeeprofile",
-=======
-
     'co2measures',
     'action',
     'employeeprofile',
     'motivation',
->>>>>>> 5b6adede1e0d16c8dfb6cd5f78671796e28083ab
 ]
 
 MIDDLEWARE = [
