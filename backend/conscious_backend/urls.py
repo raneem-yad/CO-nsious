@@ -55,4 +55,6 @@ urlpatterns = [
     path('measures/', include('co2measures.urls')), # Required for REST apis using ListCreateAPIView 
     path('action/', include('action.urls')),
     path('employeeprofile/', include('employeeprofile.urls')),
+    path('badge/', include('badge.urls')),
+    path('category/', include('category.urls')),
 ]

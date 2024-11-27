@@ -93,9 +93,7 @@ ALLOWED_HOSTS = [
     "127.0.0.1",
     ".herokuapp.com",
 ]
-CSRF_TRUSTED_ORIGINS = [
-    'https://8000-raneemyad-consious-1jz6b24l9te.ws.codeinstitute-ide.net',
-]
+
 
 # Application definition
 
@@ -122,7 +120,9 @@ INSTALLED_APPS = [
 
     'co2measures',
     'action',
-    'employeeprofile'
+    'employeeprofile',
+    'badge',
+    'category',
 ]
 
 MIDDLEWARE = [
@@ -140,7 +140,7 @@ MIDDLEWARE = [
 if DEBUG:
     MIDDLEWARE.append('corsheaders.middleware.CorsMiddleware')
     MIDDLEWARE.remove('django.middleware.csrf.CsrfViewMiddleware')
-    INSTALLED_APPS.append('corsheaders')
+    # INSTALLED_APPS.append('corsheaders')
     CORS_ORIGIN_ALLOW_ALL = True
     CORS_ALLOW_CREDENTIALS = False
     ALLOWED_HOSTS.append("127.0.0.1")
@@ -192,6 +192,7 @@ CSRF_TRUSTED_ORIGINS = [
     "http://127.0.0.1:8000/",
     "http://localhost:3000",
     "http://localhost:8000",
+    "https://8000-raneemyad-consious-1jz6b24l9te.ws.codeinstitute-ide.net",
 ]
 # CSRF_TRUSTED_ORIGINS = ["http://" + host for host in ALLOWED_HOSTS]
 
