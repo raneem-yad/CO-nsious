@@ -119,6 +119,32 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    "django.middleware.security.SecurityMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'corsheaders.middleware.CorsMiddleware',
+    'allauth.account.middleware.AccountMiddleware'
+]
+
+if DEBUG:
+    MIDDLEWARE.append('corsheaders.middleware.CorsMiddleware')
+    MIDDLEWARE.remove('django.middleware.csrf.CsrfViewMiddleware')
+    INSTALLED_APPS.append('corsheaders')
+    CORS_ORIGIN_ALLOW_ALL = True
+    CORS_ALLOW_CREDENTIALS = False
+    ALLOWED_HOSTS.append("127.0.0.1")
+    ALLOWED_HOSTS.append("localhost")
+    os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
+    ALLOWED_HOSTS.append("*")
+    ALLOWED_HOSTS.append(os.environ.get("ALLOWED_HOST"))
+
+ALLOWED_HOSTS.append(".herokuapp.com")
+
+MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     "django.middleware.security.SecurityMiddleware",
     'whitenoise.middleware.WhiteNoiseMiddleware',
@@ -157,7 +183,10 @@ CSRF_TRUSTED_ORIGINS = [
     "https://*.gitpod.io",
     "http://192.168.0.108/:3000",
     "http://127.0.0.1:8000/",
+    "http://localhost:3000",
+    "http://localhost:8000",
 ]
+# CSRF_TRUSTED_ORIGINS = ["http://" + host for host in ALLOWED_HOSTS]
 
 if "CLIENT_ORIGIN" in os.environ:
     CORS_ALLOWED_ORIGINS = [os.environ.get("CLIENT_ORIGIN")]
