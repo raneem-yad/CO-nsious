@@ -17,10 +17,41 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework import permissions
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
+
+schema_view = get_schema_view(
+    openapi.Info(
+        title="Co2-nscious",
+        default_version="v1",
+        description="Co2-nscious Website API description",
+        contact=openapi.Contact(email="ranoprog@gmail.com"),
+    ),
+    public=True,
+    permission_classes=(permissions.AllowAny,),
+)
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path(
+        "",
+        schema_view.with_ui("swagger", cache_timeout=0),
+        name="schema-swagger-ui",
+    ),
     path("api-auth/", include("rest_framework.urls")),
+    # path('api/auth/registration/', include('dj_rest_auth.registration.urls')),
+
+
+    path('dj-rest-auth/', include('dj_rest_auth.urls')),
+    path(
+        'dj-rest-auth/registration/', include('dj_rest_auth.registration.urls')
+    ),
+    path(
+        "redoc/",
+        schema_view.with_ui("redoc", cache_timeout=0),
+        name="schema-redoc",
+    ),
     path('measures/', include('co2measures.urls')), # Required for REST apis using ListCreateAPIView 
     path('action/', include('action.urls')),
     path('employeeprofile/', include('employeeprofile.urls')),
