@@ -1,5 +1,14 @@
-.footer {
+.Footer {
     color: #fff;
     text-align: center;
     background-color: #2f4858;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    padding: 10px; 
+    width: 100%; 
+    position: relative;
+}
+
+.Footer p {
+    margin-bottom: 0;
 }
