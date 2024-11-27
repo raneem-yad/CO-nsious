@@ -47,7 +47,7 @@ JWT_AUTH_REFRESH_COOKIE = "my-refresh-token"
 JWT_AUTH_SAMESITE = "None"
 
 REST_AUTH_SERIALIZERS = {
-    'USER_DETAILS_SERIALIZER': 'conscious_backend.serializers.CurrentUserSerializer'
+    "USER_DETAILS_SERIALIZER": "conscious_backend.serializers.CurrentUserSerializer"
 }
 
 # all auth settings (Account Setup)
@@ -102,20 +102,17 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    'drf_yasg',
-    'corsheaders',
-
+    "drf_yasg",
+    "corsheaders",
     # Third-party apps
-    'rest_framework',
-    'rest_framework.authtoken',  # Required for token authentication
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',  # Optional, for social authentication
-    'dj_rest_auth',
-
+    "rest_framework",
+    "rest_framework.authtoken",  # Required for token authentication
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",  # Optional, for social authentication
+    "dj_rest_auth",
     "django.contrib.sites",
     "dj_rest_auth.registration",
-
 ]
 
 MIDDLEWARE = [
@@ -126,19 +123,19 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    'corsheaders.middleware.CorsMiddleware',
-    'allauth.account.middleware.AccountMiddleware'
+    "corsheaders.middleware.CorsMiddleware",
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 if DEBUG:
-    MIDDLEWARE.append('corsheaders.middleware.CorsMiddleware')
-    MIDDLEWARE.remove('django.middleware.csrf.CsrfViewMiddleware')
-    INSTALLED_APPS.append('corsheaders')
+    MIDDLEWARE.append("corsheaders.middleware.CorsMiddleware")
+    MIDDLEWARE.remove("django.middleware.csrf.CsrfViewMiddleware")
+    # INSTALLED_APPS.append('corsheaders')
     CORS_ORIGIN_ALLOW_ALL = True
     CORS_ALLOW_CREDENTIALS = False
     ALLOWED_HOSTS.append("127.0.0.1")
     ALLOWED_HOSTS.append("localhost")
-    os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
+    os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
     ALLOWED_HOSTS.append("*")
     ALLOWED_HOSTS.append(os.environ.get("ALLOWED_HOST"))
 
@@ -150,16 +147,16 @@ ALLOWED_HOSTS.append(os.environ.get("ALLOWED_HOST"))
 ALLOWED_HOSTS.append(".herokuapp.com")
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    'allauth.account.middleware.AccountMiddleware'
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = "conscious_backend.urls"
