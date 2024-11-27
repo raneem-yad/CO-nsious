@@ -34,6 +34,26 @@ const NavBarNotLoggedIn = () => {
                 Sign up
               </Link>
             </li>
+            <li className='nav-item'>
+              <Link className='nav-link' to={'/dashboard'}>
+                Dashboard
+              </Link>
+            </li>
+            <li className='nav-item'>
+              <Link className='nav-link' to={'/profile'}>
+                Profile
+              </Link>
+            </li>
+            <li className='nav-item'>
+              <Link className='nav-link' to={'/actions'}>
+                Actions
+              </Link>
+            </li>
+            <li className='nav-item'>
+              <Link className='nav-link' to={'/about'}>
+                About
+              </Link>
+            </li>
           </ul>
         </div>
       </div>
@@ -63,6 +83,26 @@ const NavBarLogged = () => {
         {/* Collapsible menu */}
         <div className='collapse navbar-collapse' id='navbarSupportedContent'>
           <ul className='navbar-nav ms-auto'>
+          <li className='nav-item'>
+              <Link className='nav-link' to={'/dashboard'}>
+                Dashboard
+              </Link>
+            </li>
+            <li className='nav-item'>
+              <Link className='nav-link' to={'/profile'}>
+                Profile
+              </Link>
+            </li>
+            <li className='nav-item'>
+              <Link className='nav-link' to={'/actions'}>
+                Actions
+              </Link>
+            </li>
+            <li className='nav-item'>
+              <Link className='nav-link' to={'/about'}>
+                About
+              </Link>
+            </li>
             <li className='nav-item'>
               <Link className='nav-link' to={'/logout'}>
                 Logout
@@ -77,5 +117,5 @@ const NavBarLogged = () => {
 
 export const Navbar = () => {
   const { user, setUser } = useContext(UserContext)
-  return <>{user.token ? <NavBarLogged /> : <NavBarNotLoggedIn />}</>
+  return <>{user.token ? <NavBarNotLoggedIn /> : <NavBarNotLoggedIn />}</>
 }
