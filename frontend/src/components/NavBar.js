@@ -40,13 +40,13 @@ const NavBarNotLoggedIn = () => {
               </Link>
             </li>
             <li className='nav-item'>
-              <Link className='nav-link' to={'/profile'}>
-                Profile
+              <Link className='nav-link' to={'/actions'}>
+                Actions
               </Link>
             </li>
             <li className='nav-item'>
-              <Link className='nav-link' to={'/actions'}>
-                Actions
+              <Link className='nav-link' to={'/profile'}>
+                Profile
               </Link>
             </li>
             <li className='nav-item'>
@@ -89,13 +89,13 @@ const NavBarLogged = () => {
               </Link>
             </li>
             <li className='nav-item'>
-              <Link className='nav-link' to={'/profile'}>
-                Profile
+              <Link className='nav-link' to={'/actions'}>
+                Actions
               </Link>
             </li>
             <li className='nav-item'>
-              <Link className='nav-link' to={'/actions'}>
-                Actions
+              <Link className='nav-link' to={'/profile'}>
+                Profile
               </Link>
             </li>
             <li className='nav-item'>
