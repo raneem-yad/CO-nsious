@@ -2,7 +2,6 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import { UserProvider } from './context/UserProvider'
 
 import { Navbar } from './components/NavBar'
-import Header from './components/Header'
 import LoginPage from './components/LoginPage'
 import AboutPage from './components/AboutPage'
 import Footer from './components/Footer'
@@ -17,11 +16,8 @@ import Actions from './components/Actions'
 function App() {
   return (
     <UserProvider>
-      <h1>MainApp</h1>
-      <hr />
-      <Header />
-
       <div className='App'>
+        <br />
         <Navbar />
 
         <Routes>

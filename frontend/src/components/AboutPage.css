@@ -1,0 +1,70 @@
+/* Team section container */
+.team {
+    text-align: center;
+    padding: 40px 20px;
+  }
+  
+  .team h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  /* Profile list grid layout */
+  .profile-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    justify-items: center;
+  }
+  
+  /* Individual profile cards */
+  .profile-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .profile-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Circular images */
+  .profile-card img {
+    width: 120px; /* Adjust as needed */
+    height: 120px; /* Match width for a perfect circle */
+    border-radius: 50%;
+    object-fit: cover; /* Ensures image fits the circle */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+  }
+  
+  /* Profile text */
+  .profile-card h4 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+  }
+  
+  .profile-card p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 15px;
+  }
+  
+  /* Links */
+  .links a {
+    margin: 0 8px;
+    font-size: 1.2rem;
+    color: #0077b5; /* LinkedIn blue or similar */
+    transition: color 0.2s;
+  }
+  
+  .links a:hover {
+    color: #005582; /* Darker shade for hover */
+  }
+  

@@ -1,13 +1,17 @@
 import { Link } from 'react-router-dom'
 import { UserContext } from '../context/UserContext'
-import { useContext } from 'react'
+import { useContext } from 'react' 
+import logo from '../assets/_Logo_CO2nscious.webp'
+import './NavBar.css'
+
 
 const NavBarNotLoggedIn = () => {
   return (
     <nav className='navbar navbar-expand-lg navbar-light bg-light fixed-top'>
       <div className='container'>
-        <Link className='navbar-brand' to={'/sign-in'}>
-          C0₂nscious
+        <Link className='navbar-brand' to={'/'}>
+        <img src={logo} alt="CO₂nscious Logo" className={"Logo"} />
+        <span className={"LogoText"}>C0₂nscious</span>
         </Link>
         {/* Toggler button for small screens */}
         <button
@@ -65,7 +69,8 @@ const NavBarLogged = () => {
   return (
     <nav className='navbar navbar-expand-lg navbar-light bg-light fixed-top'>
       <div className='container'>
-        <Link className='navbar-brand' to={'/sign-in'}>
+        <Link className='navbar-brand' to={'/dashboard'}>
+        <img src={logo} alt="CO₂nscious Logo" className={"Logo"} />
           C0₂nscious
         </Link>
         {/* Toggler button for small screens */}

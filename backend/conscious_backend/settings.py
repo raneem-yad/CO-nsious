@@ -23,7 +23,6 @@ from django.conf.global_settings import ALLOWED_HOSTS
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # auth-token configurations
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
@@ -76,6 +75,30 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = "DEVELOPMENT" in os.environ
 
+if DEBUG:
+    # MIDDLEWARE.append('corsheaders.middleware.CorsMiddleware')
+    # MIDDLEWARE.remove('django.middleware.csrf.CsrfViewMiddleware')
+    # INSTALLED_APPS.append('corsheaders')
+    CORS_ORIGIN_ALLOW_ALL = True
+    CORS_ALLOW_CREDENTIALS = False
+    # ALLOWED_HOSTS.append("127.0.0.1")
+    # ALLOWED_HOSTS.append("localhost")
+    # os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
+    ALLOWED_HOSTS.append("*")
+
+ALLOWED_HOSTS = [
+    os.environ.get("ALLOWED_HOST"),
+    "8000-raneemyad-consious-1jz6b24l9te.ws.codeinstitute-ide.net",
+    "localhost",
+    "127.0.0.1",
+    ".herokuapp.com",
+]
+CSRF_TRUSTED_ORIGINS = [
+    'https://8000-raneemyad-consious-1jz6b24l9te.ws.codeinstitute-ide.net',
+]
+
+# Application definition
+
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -84,6 +107,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     'drf_yasg',
+    'corsheaders',
 
     # Third-party apps
     'rest_framework',
@@ -96,6 +120,9 @@ INSTALLED_APPS = [
     "django.contrib.sites",
     "dj_rest_auth.registration",
 
+    'co2measures',
+    'action',
+    'employeeprofile'
 ]
 
 MIDDLEWARE = [
@@ -113,7 +140,7 @@ MIDDLEWARE = [
 if DEBUG:
     MIDDLEWARE.append('corsheaders.middleware.CorsMiddleware')
     MIDDLEWARE.remove('django.middleware.csrf.CsrfViewMiddleware')
-    INSTALLED_APPS.append('corsheaders')
+    # INSTALLED_APPS.append('corsheaders')
     CORS_ORIGIN_ALLOW_ALL = True
     CORS_ALLOW_CREDENTIALS = False
     ALLOWED_HOSTS.append("127.0.0.1")
@@ -122,22 +149,18 @@ if DEBUG:
     ALLOWED_HOSTS.append("*")
     ALLOWED_HOSTS.append(os.environ.get("ALLOWED_HOST"))
 
-ALLOWED_HOSTS.append("127.0.0.1")
-ALLOWED_HOSTS.append("localhost")
-os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
-ALLOWED_HOSTS.append("*")
-ALLOWED_HOSTS.append(os.environ.get("ALLOWED_HOST"))
 ALLOWED_HOSTS.append(".herokuapp.com")
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     "django.middleware.security.SecurityMiddleware",
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    'corsheaders.middleware.CorsMiddleware',
     'allauth.account.middleware.AccountMiddleware'
 ]
 
@@ -146,7 +169,7 @@ ROOT_URLCONF = "conscious_backend.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        'DIRS': [os.path.join(BASE_DIR,'static'),], 
+        'DIRS': [os.path.join(BASE_DIR,'static'),],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -162,10 +185,10 @@ TEMPLATES = [
 WSGI_APPLICATION = "conscious_backend.wsgi.application"
 SITE_ID = 1
 
-
 CSRF_TRUSTED_ORIGINS = [
     "https://*.herokuapp.com",
     "https://*.gitpod.io",
+    "http://192.168.0.108/:3000",
     "http://127.0.0.1:8000/",
     "http://localhost:3000",
     "http://localhost:8000",
@@ -174,6 +197,12 @@ CSRF_TRUSTED_ORIGINS = [
 
 if "CLIENT_ORIGIN" in os.environ:
     CORS_ALLOWED_ORIGINS = [os.environ.get("CLIENT_ORIGIN")]
+
+else:
+    CORS_ALLOWED_ORIGIN_REGEXES = [
+        r"^https://.*\.gitpod\.io$",
+    ]
+
 if "CLIENT_ORIGIN_DEV" in os.environ:
     CORS_ALLOWED_ORIGINS = [
         os.environ.get("CLIENT_ORIGIN_DEV"),
@@ -181,7 +210,6 @@ if "CLIENT_ORIGIN_DEV" in os.environ:
     ]
 
 CORS_ALLOW_CREDENTIALS = True
-
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
@@ -212,7 +240,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
@@ -224,14 +251,21 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = "/static/"
+STATIC_URL = "static/"
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, "static"),
+# ]
+# STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+#
+# STATIC_URL = "/static/"
 # STATIC_ROOT = [os.path.join(BASE_DIR, 'static')]
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
