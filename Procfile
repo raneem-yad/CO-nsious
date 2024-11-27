@@ -1,2 +1,2 @@
 release: python manage.py makemigrations && python manage.py migrate
-web: gunicorn conscious_backend.wsgi
+web: gunicorn backend.conscious_backend.wsgi
