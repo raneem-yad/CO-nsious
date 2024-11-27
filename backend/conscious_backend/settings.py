@@ -47,11 +47,15 @@ if DEBUG:
 
 ALLOWED_HOSTS = [
     os.environ.get("ALLOWED_HOST"),
+    "8000-raneemyad-consious-1jz6b24l9te.ws.codeinstitute-ide.net",
     "localhost",
     "127.0.0.1",
     ".herokuapp.com",
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://8000-raneemyad-consious-1jz6b24l9te.ws.codeinstitute-ide.net',
+]
 
 # Application definition
 
@@ -66,6 +70,8 @@ INSTALLED_APPS = [
     #Custom
     'rest_framework',
     'co2measures',
+    'action',
+    'employeeprofile'
 ]
 
 MIDDLEWARE = [
