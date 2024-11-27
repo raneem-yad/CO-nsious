@@ -23,7 +23,6 @@ from django.conf.global_settings import ALLOWED_HOSTS
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # auth-token configurations
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
@@ -76,7 +75,6 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = "DEVELOPMENT" in os.environ
 
-
 if DEBUG:
     # MIDDLEWARE.append('corsheaders.middleware.CorsMiddleware')
     # MIDDLEWARE.remove('django.middleware.csrf.CsrfViewMiddleware')
@@ -94,7 +92,6 @@ ALLOWED_HOSTS = [
     "127.0.0.1",
     ".herokuapp.com",
 ]
-
 
 # Application definition
 
@@ -116,21 +113,21 @@ INSTALLED_APPS = [
     'allauth.socialaccount',  # Optional, for social authentication
     'dj_rest_auth',
 
-
     "django.contrib.sites",
     "dj_rest_auth.registration",
 
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     "django.middleware.security.SecurityMiddleware",
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    'corsheaders.middleware.CorsMiddleware',
     'allauth.account.middleware.AccountMiddleware'
 ]
 
@@ -155,7 +152,6 @@ TEMPLATES = [
 WSGI_APPLICATION = "conscious_backend.wsgi.application"
 SITE_ID = 1
 
-
 CSRF_TRUSTED_ORIGINS = [
     "https://*.herokuapp.com",
     "https://*.gitpod.io",
@@ -165,6 +161,12 @@ CSRF_TRUSTED_ORIGINS = [
 
 if "CLIENT_ORIGIN" in os.environ:
     CORS_ALLOWED_ORIGINS = [os.environ.get("CLIENT_ORIGIN")]
+
+else:
+    CORS_ALLOWED_ORIGIN_REGEXES = [
+        r"^https://.*\.gitpod\.io$",
+    ]
+
 if "CLIENT_ORIGIN_DEV" in os.environ:
     CORS_ALLOWED_ORIGINS = [
         os.environ.get("CLIENT_ORIGIN_DEV"),
@@ -172,7 +174,6 @@ if "CLIENT_ORIGIN_DEV" in os.environ:
     ]
 
 CORS_ALLOW_CREDENTIALS = True
-
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
@@ -203,7 +204,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
@@ -215,11 +215,14 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = "static/"
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
