@@ -133,7 +133,7 @@ MIDDLEWARE = [
 if DEBUG:
     MIDDLEWARE.append('corsheaders.middleware.CorsMiddleware')
     MIDDLEWARE.remove('django.middleware.csrf.CsrfViewMiddleware')
-    INSTALLED_APPS.append('corsheaders')
+    # INSTALLED_APPS.append('corsheaders')
     CORS_ORIGIN_ALLOW_ALL = True
     CORS_ALLOW_CREDENTIALS = False
     ALLOWED_HOSTS.append("127.0.0.1")
