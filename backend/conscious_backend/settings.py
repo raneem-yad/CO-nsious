@@ -96,6 +96,7 @@ ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
     ".herokuapp.com",
+    "*.herokuapp.com",
 ]
 CSRF_TRUSTED_ORIGINS = [
     'https://8000-raneemyad-consious-1jz6b24l9te.ws.codeinstitute-ide.net',
@@ -154,6 +155,7 @@ if DEBUG:
     ALLOWED_HOSTS.append(os.environ.get("ALLOWED_HOST"))
 
 ALLOWED_HOSTS.append(".herokuapp.com")
+ALLOWED_HOSTS.append("*.herokuapp.com")
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
