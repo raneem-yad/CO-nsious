@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const domainApi = window.document.location.href.includes('localhost') ? 'http://localhost:8000' : 'https://herokuapp.com:8000';
+const domainApi = window.document.location.href.includes('localhost') ? 'http://localhost:8000' : 'https://co2nsciousapp-8e3344a058b5.herokuapp.com';
 
 // TODO: // Add your admin user credentials here to login automatically
 const adminUserSecretCredentials = {
