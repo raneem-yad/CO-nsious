@@ -1,0 +1,4 @@
+.CustomProgressBar{
+    --bs-progress-bar-bg: #1eec73 !important; 
+    --bs-progress-bar-color: #2f4858 !important; 
+  }

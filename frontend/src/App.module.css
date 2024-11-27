@@ -1,0 +1,19 @@
+.App {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  min-height: 100vh;
+}
+
+body,
+html,
+#root {
+  height: 100%; /* Ensure full height for the viewport */
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Full viewport height for the content */
+}
