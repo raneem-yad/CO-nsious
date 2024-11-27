@@ -52,4 +52,7 @@ urlpatterns = [
         schema_view.with_ui("redoc", cache_timeout=0),
         name="schema-redoc",
     ),
+    path('measures/', include('co2measures.urls')), # Required for REST apis using ListCreateAPIView 
+    path('action/', include('action.urls')),
+    path('employeeprofile/', include('employeeprofile.urls')),
 ]
