@@ -1,13 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.48facaed.css",
-    "main.js": "/static/js/main.77f12aad.js",
+
+    "main.css": "/static/css/main.1953b7aa.css",
+    "main.js": "/static/js/main.03ffc694.js",
+    "static/media/_Logo_CO2nscious.webp": "/static/media/_Logo_CO2nscious.ae812cd74bf943db905c.webp",
     "index.html": "/index.html",
-    "main.48facaed.css.map": "/static/css/main.48facaed.css.map",
-    "main.77f12aad.js.map": "/static/js/main.77f12aad.js.map"
+    "main.1953b7aa.css.map": "/static/css/main.1953b7aa.css.map",
+    "main.03ffc694.js.map": "/static/js/main.03ffc694.js.map"
   },
   "entrypoints": [
-    "static/css/main.48facaed.css",
-    "static/js/main.77f12aad.js"
+    "static/css/main.1953b7aa.css",
+    "static/js/main.03ffc694.js"
   ]
 }
