@@ -92,7 +92,7 @@ const Profile = () => {
                     Save Changes{' '}
                   </Button>
                 ) : (
-                  <Button variant='primary' onClick={handleEdit}>
+                  <Button variant='success' onClick={handleEdit}>
                     Edit Profile{' '}
                   </Button>
                 )}{' '}

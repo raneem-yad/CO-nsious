@@ -1,5 +1,8 @@
 import React from 'react'
 import { Container, Row, Col, ProgressBar, Card } from 'react-bootstrap'
+import badgeTransportation from '../assets/badges/badge_transportation.webp'
+import badgeWaste from '../assets/badges/badge_waste.webp'
+import badgeEnergy from '../assets/badges/badge_energy.webp'
 import './Dashboard.css'
 
 const Dashboard = () => {
@@ -43,19 +46,19 @@ const Dashboard = () => {
               <p>Badges earned:</p>
               <div className='d-flex justify-content-center'>
                 <img
-                  src='/path/to/acorn-icon.png'
+                  src={badgeTransportation}
                   alt='Acorn Badge'
-                  style={{ width: '40px', margin: '0 10px' }}
+                  style={{ width: '100px', margin: '0 10px' }}
                 />
                 <img
-                  src='/path/to/camel-icon.png'
+                  src={badgeWaste}
                   alt='Camel Badge'
-                  style={{ width: '40px', margin: '0 10px' }}
+                  style={{ width: '100px', margin: '0 10px' }}
                 />
                 <img
-                  src='/path/to/pixel-icon.png'
+                  src={badgeEnergy}
                   alt='Pixel Badge'
-                  style={{ width: '40px', margin: '0 10px' }}
+                  style={{ width: '100px', margin: '0 10px' }}
                 />
               </div>
             </Col>

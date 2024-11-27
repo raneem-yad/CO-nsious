@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react'
 import { UserContext } from '../context/UserContext'
 import API, { temporaryLogin } from '../utils/api'
 import { Navigate } from 'react-router-dom'
+import { Alert } from 'react-bootstrap'
 
 const SignUp = () => {
   const [username, setUsername] = useState('')
@@ -21,7 +22,7 @@ const SignUp = () => {
       await console.log('Toke before: ', localStorage.getItem('authToken'))
       await temporaryLogin()
       await console.log('Token: ', localStorage.getItem('authToken'))
-      await API.post('/registration/', {
+      await API.post('/dj-rest-auth/registration/', {
         username,
         email,
         password1,
@@ -40,27 +41,11 @@ const SignUp = () => {
 
   return (
     <>
-      {/* {user.token && <Navigate to='/dashboard' />} */}
+      {user.token && <Navigate to='/dashboard' />}
       <div className='auth-wrapper'>
         <div className='auth-inner'>
           <form onSubmit={handleRegister}>
             <h3>Sign Up</h3>
-            <div className='mb-3'>
-              <label>First name</label>
-              <input
-                type='text'
-                className='form-control'
-                placeholder='First name'
-              />
-            </div>
-            <div className='mb-3'>
-              <label>Last name</label>
-              <input
-                type='text'
-                className='form-control'
-                placeholder='Last name'
-              />
-            </div>
             <div className='mb-3'>
               <label>Username</label>
               <input
@@ -106,18 +91,22 @@ const SignUp = () => {
                 required
                 className='form-control'
                 autocomplete='new-password'
-                placeholder='Enter password'
+                placeholder='Confirm Password'
               />
             </div>
             <div className='d-grid'>
-              <button type='submit' className='btn btn-primary'>
+              <button type='submit' className='btn btn-success'>
                 Sign Up
               </button>
             </div>
             <p className='forgot-password text-right'>
               Already registered <a href='/login'>sign in?</a>
             </p>
-            {message && <p>{message}</p>}
+            {message && (
+              <Alert variant={'danger'} className='mt-3'>
+                {message}
+              </Alert>
+            )}
           </form>
         </div>
       </div>

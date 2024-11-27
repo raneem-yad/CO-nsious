@@ -38,26 +38,6 @@ const NavBarNotLoggedIn = () => {
                 Sign up
               </Link>
             </li>
-            <li className='nav-item'>
-              <Link className='nav-link' to={'/dashboard'}>
-                Dashboard
-              </Link>
-            </li>
-            <li className='nav-item'>
-              <Link className='nav-link' to={'/actions'}>
-                Actions
-              </Link>
-            </li>
-            <li className='nav-item'>
-              <Link className='nav-link' to={'/profile'}>
-                Profile
-              </Link>
-            </li>
-            <li className='nav-item'>
-              <Link className='nav-link' to={'/about'}>
-                About
-              </Link>
-            </li>
           </ul>
         </div>
       </div>
@@ -122,5 +102,5 @@ const NavBarLogged = () => {
 
 export const Navbar = () => {
   const { user, setUser } = useContext(UserContext)
-  return <>{user.token ? <NavBarNotLoggedIn /> : <NavBarNotLoggedIn />}</>
+  return <>{user.token ? <NavBarLogged /> : <NavBarNotLoggedIn />}</>
 }

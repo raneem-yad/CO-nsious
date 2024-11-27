@@ -4,6 +4,11 @@
 }
 
 .LogoText {
-    color: #2f4858;
+    color: ##014751;
     font-family: 'Inter';
 }
+
+nav .navbar-nav li a{
+    color: #014751 !important;
+    }
+

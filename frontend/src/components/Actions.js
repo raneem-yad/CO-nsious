@@ -2,13 +2,30 @@ import React, { useEffect, useState } from 'react'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import Dropdown from 'react-bootstrap/Dropdown'
+import API from '../utils/api'
 import './Actions.css'
+
+const getMeasures = async () => {
+  try {
+    const response = await API.get('/measures/', {})
+    console.log(response.data)
+    return response.data
+  } catch (err) {
+    // setError('Login failed. Check your credentials.')
+    console.error('Failed to fetch measures:', err)
+  }
+}
 
 const Actions = () => {
   const [action, setAction] = useState('')
 
   useEffect(() => {
-    console.log('Action:', action)
+    const fetchMeasures = async () => {
+      console.log('Action:', action)
+      const measures = await getMeasures()
+      console.log('Measures:', measures)
+    }
+    fetchMeasures()
   }, [action])
 
   const cards = [

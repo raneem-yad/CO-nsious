@@ -3,8 +3,9 @@ import React, { useState, useContext } from 'react'
 import { UserContext } from '../context/UserContext'
 import API from '../utils/api'
 import { Navigate } from 'react-router-dom'
+import { Alert } from 'react-bootstrap'
 
-const LoginPage = () => {
+const Login = () => {
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -14,7 +15,7 @@ const LoginPage = () => {
   const handleLogin = async (e) => {
     e.preventDefault()
     try {
-      const response = await API.post('/login/', { username, email, password })
+      const response = await API.post('/dj-rest-auth/login/', { username, email, password })
       localStorage.setItem('authToken', response.data.key) // Save token
       setUser({ token: response.data.key, username, email })
       // alert('Login successful!')
@@ -27,7 +28,7 @@ const LoginPage = () => {
 
   return (
     <>
-      {/* {user.token && <Navigate to='/dashboard' />} */}
+      {user.token && <Navigate to='/dashboard' />}
       <div className='auth-wrapper'>
         <div className='auth-inner'>
           <form onSubmit={handleLogin}>
@@ -64,28 +65,20 @@ const LoginPage = () => {
                 placeholder='Enter password'
               />
             </div>
-            <div className='mb-3'>
-              <div className='custom-control custom-checkbox'>
-                <input
-                  type='checkbox'
-                  className='custom-control-input'
-                  id='customCheck1'
-                />
-                <label className='custom-control-label' htmlFor='customCheck1'>
-                  Remember me
-                </label>
-              </div>
-            </div>
             <div className='d-grid'>
-              <button type='submit' className='btn btn-primary'>
+              <button type='submit' className='btn btn-success'>
                 Login
               </button>
             </div>
             <p className='forgot-password text-right'>
               Forgot <a href='#'>password?</a>
             </p>
-            {error && <p>{error}</p>}
-            <pre>{JSON.stringify(user, null, 3)}</pre>
+            {error && (
+              <Alert variant={'danger'} className='mt-3'>
+                {error}
+              </Alert>
+            )}
+            {/* <pre>{JSON.stringify(user, null, 3)}</pre> */}
           </form>
         </div>
       </div>
@@ -93,4 +86,4 @@ const LoginPage = () => {
   )
 }
 
-export default LoginPage
+export default Login

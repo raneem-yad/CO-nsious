@@ -31,7 +31,7 @@ export const temporaryLogin = async () => {
 }
 
 const API = axios.create({
-    baseURL: `${domainApi}/dj-rest-auth`, 
+    baseURL: `${domainApi}`, 
 });
 
 // Add an interceptor to include tokens in requests
