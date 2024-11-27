@@ -27,7 +27,7 @@ const LoginPage = () => {
 
   return (
     <>
-      {user.token && <Navigate to='/dashboard' />}
+      {/* {user.token && <Navigate to='/dashboard' />} */}
       <form onSubmit={handleLogin}>
         <h3>Sign In</h3>
         <div className='mb-3'>

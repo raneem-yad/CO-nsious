@@ -122,6 +122,11 @@ if DEBUG:
     ALLOWED_HOSTS.append("*")
     ALLOWED_HOSTS.append(os.environ.get("ALLOWED_HOST"))
 
+ALLOWED_HOSTS.append("127.0.0.1")
+ALLOWED_HOSTS.append("localhost")
+os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
+ALLOWED_HOSTS.append("*")
+ALLOWED_HOSTS.append(os.environ.get("ALLOWED_HOST"))
 ALLOWED_HOSTS.append(".herokuapp.com")
 
 MIDDLEWARE = [
@@ -141,7 +146,7 @@ ROOT_URLCONF = "conscious_backend.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        'DIRS': [os.path.join(BASE_DIR,'static'),], 
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -161,7 +166,6 @@ SITE_ID = 1
 CSRF_TRUSTED_ORIGINS = [
     "https://*.herokuapp.com",
     "https://*.gitpod.io",
-    "http://192.168.0.108/:3000",
     "http://127.0.0.1:8000/",
     "http://localhost:3000",
     "http://localhost:8000",
@@ -224,7 +228,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
+# STATIC_ROOT = [os.path.join(BASE_DIR, 'static')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
