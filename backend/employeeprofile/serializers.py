@@ -3,5 +3,5 @@ from .models import EmployeeProfile
 
 class EmployeeProfileSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Measure
+        model = EmployeeProfile
         fields = ['id', 'employee', 'total_points']
