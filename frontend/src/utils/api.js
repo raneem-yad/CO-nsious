@@ -1,7 +1,9 @@
 import axios from 'axios';
 
-export const tokenAuth = 'c16414b2d3f88278c3f7aac148f7d96cadfbdddf'
+export const tokenAuth = process.env.REACT_APP_API_TOKEN;
 const domainApi = window.document.location.href.includes('localhost') ? 'http://localhost:8000' : 'https://co2nsciousapp-8e3344a058b5.herokuapp.com';
+
+// console.log('tokenAuth:', tokenAuth);
 
 export const handleLogout = async () => {
     try {
