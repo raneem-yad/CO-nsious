@@ -26,7 +26,14 @@ class EmployeeProfile(models.Model):
 
     def __str__(self):
         return self.employee.username
-        
+
+
     def update_employee_points(sender, instance, created, **kwargs):
         self.total_points += points
         self.save()
+
+
+    @receiver(post_save, sender=User)
+    def create_user_profile(instance, created, **kwargs):
+        if created:
+            EmployeeProfile.objects.create(user=instance)
