@@ -11,7 +11,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name="MotivationalMessage",
+            name="Category",
             fields=[
                 (
                     "id",
@@ -22,8 +22,11 @@ class Migration(migrations.Migration):
                         verbose_name="ID",
                     ),
                 ),
-                ("message", models.TextField()),
-                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("name", models.CharField(max_length=50, unique=True)),
+                ("description", models.TextField(blank=True)),
             ],
+            options={
+                "verbose_name_plural": "Categories",
+            },
         ),
     ]
