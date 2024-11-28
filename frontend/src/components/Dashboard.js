@@ -5,6 +5,7 @@ import badgeWaste from '../assets/badges/badge_waste.webp'
 import badgeEnergy from '../assets/badges/badge_energy.webp'
 import './Dashboard.css'
 import CheckPath from './utils/CheckPath'
+import {Motivation} from './Motivation.js'
 
 const Dashboard = () => {
   return (
@@ -35,7 +36,7 @@ const Dashboard = () => {
                   <Card.Body>
                     <Card.Title>AI Tip:</Card.Title>
                     <Card.Text>
-                      Make small changes today for a big impact tomorrow!
+                      <Motivation/>
                     </Card.Text>
                   </Card.Body>
                 </Card>
