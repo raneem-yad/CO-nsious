@@ -16,6 +16,10 @@
     gap: 20px;
     justify-items: center;
   }
+ 
+  .profile-list a {
+    color: #2f4858;
+  }
   
   /* Individual profile cards */
   .profile-card {
