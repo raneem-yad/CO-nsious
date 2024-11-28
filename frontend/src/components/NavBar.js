@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { UserContext } from '../context/UserContext'
 import { useContext } from 'react' 
 import logo from '../assets/_Logo_CO2nscious.webp'
@@ -6,6 +6,8 @@ import './NavBar.css'
 
 
 const NavBarNotLoggedIn = () => {
+  const location = useLocation();
+  
   return (
     <nav className='navbar navbar-expand-lg navbar-light bg-light fixed-top'>
       <div className='container'>
@@ -29,13 +31,24 @@ const NavBarNotLoggedIn = () => {
         <div className='collapse navbar-collapse' id='navbarSupportedContent'>
           <ul className='navbar-nav ms-auto'>
             <li className='nav-item'>
-              <Link className='nav-link' to={'/login'}>
+              <Link className={`nav-link ${
+                  location.pathname === '/login' ? 'active-link' : ''
+                }`} to={'/login'} >
                 Login
               </Link>
             </li>
             <li className='nav-item'>
-              <Link className='nav-link' to={'/signup'}>
+              <Link className={`nav-link ${
+                  location.pathname === '/signup' ? 'active-link' : ''
+                }`} to={'/signup'}>
                 Sign up
+              </Link>
+            </li>
+            <li className='nav-item'>
+              <Link className={`nav-link ${
+                  location.pathname === '/about' ? 'active-link' : ''
+                }`} to={'/about'}>
+                About
               </Link>
             </li>
           </ul>
@@ -46,6 +59,7 @@ const NavBarNotLoggedIn = () => {
 }
 
 const NavBarLogged = () => {
+  const location = useLocation();
   return (
     <nav className='navbar navbar-expand-lg navbar-light bg-light fixed-top'>
       <div className='container'>
@@ -69,27 +83,37 @@ const NavBarLogged = () => {
         <div className='collapse navbar-collapse' id='navbarSupportedContent'>
           <ul className='navbar-nav ms-auto'>
           <li className='nav-item'>
-              <Link className='nav-link' to={'/dashboard'}>
+              <Link className={`nav-link ${
+                  location.pathname === '/dashboard' ? 'active-link' : ''
+                }`} to={'/dashboard'}>
                 Dashboard
               </Link>
             </li>
             <li className='nav-item'>
-              <Link className='nav-link' to={'/actions'}>
+              <Link className={`nav-link ${
+                  location.pathname === '/actions' ? 'active-link' : ''
+                }`} to={'/actions'}>
                 Actions
               </Link>
             </li>
             <li className='nav-item'>
-              <Link className='nav-link' to={'/profile'}>
+              <Link className={`nav-link ${
+                  location.pathname === '/profile' ? 'active-link' : ''
+                }`} to={'/profile'}>
                 Profile
               </Link>
             </li>
             <li className='nav-item'>
-              <Link className='nav-link' to={'/about'}>
+              <Link className={`nav-link ${
+                  location.pathname === '/about' ? 'active-link' : ''
+                }`} to={'/about'}>
                 About
               </Link>
             </li>
             <li className='nav-item'>
-              <Link className='nav-link' to={'/logout'}>
+              <Link className={`nav-link ${
+                  location.pathname === '/logout' ? 'active-link' : ''
+                }`} to={'/logout'}>
                 Logout
               </Link>
             </li>

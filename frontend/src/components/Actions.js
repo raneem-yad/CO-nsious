@@ -4,6 +4,8 @@ import Button from 'react-bootstrap/Button'
 import Dropdown from 'react-bootstrap/Dropdown'
 import API from '../utils/api'
 import './Actions.css'
+import { Navigate } from 'react-router-dom'
+import CheckPath from './utils/CheckPath'
 
 const getMeasures = async () => {
   try {
@@ -46,7 +48,7 @@ const Actions = () => {
     {
       title: 'Energy',
       image:
-        'https://arayara.org/wp-content/uploads/2023/08/DreamShaper_v7_renewable_energy_industry_making_big_money_0-1.jpg',
+        'https://sustainability.atmeta.com/wp-content/uploads/2024/08/GettyImages-539998802.jpg',
       text: 'Some quick example text to build on the card title and make up the bulk of the card content.',
       onClick: () => alert('Energy')
     }
@@ -91,6 +93,7 @@ const Actions = () => {
 
   return (
     <>
+      <CheckPath needToBeLogged={true}/>
       <div className='auth-wrapper'>
         <div className='auth-inner' style={{ width: '100%' }}>
           <div className='card-grid'>

@@ -1,6 +1,5 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { UserProvider } from './context/UserProvider'
-
 import { Navbar } from './components/NavBar'
 import Login from './components/Login'
 import AboutPage from './components/AboutPage'
@@ -17,9 +16,8 @@ function App() {
   return (
     <UserProvider>
       <div className='App'>
-        <br />
         <Navbar />
-
+        
         <Routes>
           <Route path='/' element={<HomePage />} />
           <Route path='login' element={<Login />} />
