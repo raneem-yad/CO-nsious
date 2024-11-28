@@ -59,4 +59,5 @@ urlpatterns = [
     path('measures/', include('co2measures.urls')), # Required for REST apis using ListCreateAPIView 
     path('action/', include('action.urls')),
     path('employeeprofile/', include('employeeprofile.urls')),
+    path('motivation/', include('motivation.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

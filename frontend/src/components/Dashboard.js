@@ -1,68 +1,75 @@
 import React from 'react'
 import { Container, Row, Col, ProgressBar, Card } from 'react-bootstrap'
+import badgeTransportation from '../assets/badges/badge_transportation.webp'
+import badgeWaste from '../assets/badges/badge_waste.webp'
+import badgeEnergy from '../assets/badges/badge_energy.webp'
 import './Dashboard.css'
+import CheckPath from './utils/CheckPath'
 
 const Dashboard = () => {
   return (
-    <div className='auth-wrapper'>
-      <div className='auth-inner' style={{ width: '80%' }}>
-        <Container className='mt-5'>
-          {/* Title Section */}
-          <Row className='text-center'>
-            <Col>
-              <h2>Your Points this month: 15</h2>
-              <p>Your points last month: 24</p>
-            </Col>
-          </Row>
+    <>
+      <CheckPath needToBeLogged={true} />
+      <div className='auth-wrapper'>
+        <div className='auth-inner' style={{ width: '80%' }}>
+          <Container className='mt-5'>
+            {/* Title Section */}
+            <Row className='text-center'>
+              <Col>
+                <h2>Your Points this month: 15</h2>
+                <p>Your points last month: 24</p>
+              </Col>
+            </Row>
 
-          {/* Progress Bar Section
+            {/* Progress Bar Section
       <Row className="justify-content-center">
         <Col xs={10} sm={8} md={6}>
           <ProgressBar now={85} label="85%" className={style.CustomProgressBar} />
         </Col>
       </Row> */}
 
-          {/* AI Tip Section */}
-          <Row className='justify-content-center mt-4'>
-            <Col xs={10} sm={8} md={6}>
-              <Card className='text-center'>
-                <Card.Body>
-                  <Card.Title>AI Tip:</Card.Title>
-                  <Card.Text>
-                    Make small changes today for a big impact tomorrow!
-                  </Card.Text>
-                </Card.Body>
-              </Card>
-            </Col>
-          </Row>
+            {/* AI Tip Section */}
+            <Row className='justify-content-center mt-4'>
+              <Col xs={10} sm={8} md={6}>
+                <Card className='text-center'>
+                  <Card.Body>
+                    <Card.Title>AI Tip:</Card.Title>
+                    <Card.Text>
+                      Make small changes today for a big impact tomorrow!
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              </Col>
+            </Row>
 
-          {/* Team Progress and Badges Section */}
-          <Row className='text-center mt-5'>
-            <Col>
-              <p>Team progress: Ranked #2 this quarter</p>
-              <p>Badges earned:</p>
-              <div className='d-flex justify-content-center'>
-                <img
-                  src='/path/to/acorn-icon.png'
-                  alt='Acorn Badge'
-                  style={{ width: '40px', margin: '0 10px' }}
-                />
-                <img
-                  src='/path/to/camel-icon.png'
-                  alt='Camel Badge'
-                  style={{ width: '40px', margin: '0 10px' }}
-                />
-                <img
-                  src='/path/to/pixel-icon.png'
-                  alt='Pixel Badge'
-                  style={{ width: '40px', margin: '0 10px' }}
-                />
-              </div>
-            </Col>
-          </Row>
-        </Container>
+            {/* Team Progress and Badges Section */}
+            <Row className='text-center mt-5'>
+              <Col>
+                <p>Team progress: Ranked #2 this quarter</p>
+                <p>Badges earned:</p>
+                <div className='d-flex justify-content-center'>
+                  <img
+                    src={badgeTransportation}
+                    alt='Acorn Badge'
+                    style={{ width: '100px', margin: '0 10px' }}
+                  />
+                  <img
+                    src={badgeWaste}
+                    alt='Camel Badge'
+                    style={{ width: '100px', margin: '0 10px' }}
+                  />
+                  <img
+                    src={badgeEnergy}
+                    alt='Pixel Badge'
+                    style={{ width: '100px', margin: '0 10px' }}
+                  />
+                </div>
+              </Col>
+            </Row>
+          </Container>
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 

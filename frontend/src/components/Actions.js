@@ -2,13 +2,32 @@ import React, { useEffect, useState } from 'react'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import Dropdown from 'react-bootstrap/Dropdown'
+import API from '../utils/api'
 import './Actions.css'
+import { Navigate } from 'react-router-dom'
+import CheckPath from './utils/CheckPath'
+
+const getMeasures = async () => {
+  try {
+    const response = await API.get('/measures/', {})
+    console.log(response.data)
+    return response.data
+  } catch (err) {
+    // setError('Login failed. Check your credentials.')
+    console.error('Failed to fetch measures:', err)
+  }
+}
 
 const Actions = () => {
   const [action, setAction] = useState('')
 
   useEffect(() => {
-    console.log('Action:', action)
+    const fetchMeasures = async () => {
+      console.log('Action:', action)
+      const measures = await getMeasures()
+      console.log('Measures:', measures)
+    }
+    fetchMeasures()
   }, [action])
 
   const cards = [
@@ -29,7 +48,7 @@ const Actions = () => {
     {
       title: 'Energy',
       image:
-        'https://arayara.org/wp-content/uploads/2023/08/DreamShaper_v7_renewable_energy_industry_making_big_money_0-1.jpg',
+        'https://sustainability.atmeta.com/wp-content/uploads/2024/08/GettyImages-539998802.jpg',
       text: 'Some quick example text to build on the card title and make up the bulk of the card content.',
       onClick: () => alert('Energy')
     }
@@ -74,6 +93,7 @@ const Actions = () => {
 
   return (
     <>
+      <CheckPath needToBeLogged={true}/>
       <div className='auth-wrapper'>
         <div className='auth-inner' style={{ width: '100%' }}>
           <div className='card-grid'>

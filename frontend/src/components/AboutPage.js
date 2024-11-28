@@ -52,8 +52,8 @@ const AboutPage = () => {
   ]
 
   return (
-    <div className='auth-wrapper'>
-      <div className='auth-inner' style={{ width: '90%', marginTop: '400px' }}>
+    <div className='auth-wrapper-big'>
+      <div className='auth-inner' style={{ width: '90%' }}>
         <div className='about-page'>
           <main className='content'>
             <section>

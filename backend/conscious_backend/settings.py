@@ -128,9 +128,9 @@ INSTALLED_APPS = [
     'co2measures',
     'action',
     'employeeprofile',
-
     'cloudinary',
     'cloudinary_storage'
+    'motivation',
 ]
 
 MIDDLEWARE = [
@@ -283,3 +283,6 @@ CLOUDINARY_URL = os.environ.get("CLOUDINARY_URL")
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# openAI API key
+OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
