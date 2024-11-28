@@ -98,9 +98,7 @@ ALLOWED_HOSTS = [
     ".herokuapp.com",
     "*.herokuapp.com",
 ]
-CSRF_TRUSTED_ORIGINS = [
-    'https://8000-raneemyad-consious-1jz6b24l9te.ws.codeinstitute-ide.net',
-]
+
 
 # Application definition
 
@@ -201,6 +199,8 @@ CSRF_TRUSTED_ORIGINS = [
     "http://127.0.0.1:8000/",
     "http://localhost:3000",
     "http://localhost:8000",
+    "https://8000-raneemyad-consious-1jz6b24l9te.ws.codeinstitute-ide.net",
+    "https://*.codeinstitute-ide.net",
 ]
 # CSRF_TRUSTED_ORIGINS = ["http://" + host for host in ALLOWED_HOSTS]
 
@@ -210,6 +210,7 @@ if "CLIENT_ORIGIN" in os.environ:
 else:
     CORS_ALLOWED_ORIGIN_REGEXES = [
         r"^https://.*\.gitpod\.io$",
+
     ]
 
 if "CLIENT_ORIGIN_DEV" in os.environ:
