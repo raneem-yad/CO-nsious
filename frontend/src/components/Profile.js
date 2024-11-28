@@ -8,6 +8,7 @@ import {
   Col,
   Image
 } from 'react-bootstrap'
+import CheckPath from './utils/CheckPath'
 
 const Profile = () => {
   const [image, setImage] = useState(null)
@@ -48,82 +49,93 @@ const Profile = () => {
   }, [newBio])
 
   return (
-    <div className='auth-wrapper'>
-      <div className='auth-inner' style={{ width: '100%' }}>
-        <Container className='mt-5'>
-          <Row className='justify-content-center'>
-            <Col xs={12} md={6}>
-              <div className='text-center mb-3'>
-                <Image
-                  src={objectUrl || image || 'https://via.placeholder.com/150'}
-                  alt='Profile'
-                  roundedCircle
-                  fluid
-                  style={{
-                    width: '150px',
-                    height: '150px',
-                    objectFit: 'cover',
-                    color: '#1EEC73'
-                  }}
-                  className='mb-3'
-                />
-                <br />
-                <Button variant='secondary' onClick={() => setShowModal(true)}>
-                  Change Picture{' '}
-                </Button>{' '}
-              </div>
-              <div className='mt-3 text-center'>
-                {' '}
-                {isEditing ? (
-                  <Form.Control
-                    as='textarea'
-                    rows={3}
-                    value={newBio}
-                    onChange={(e) => setNewBio(e.target.value)}
+    <>
+      <CheckPath needToBeLogged={true} />
+      <div className='auth-wrapper'>
+      <div className='auth-inner' style={{ width: '80%' }}>
+          <Container className='mt-5'>
+            <Row className='justify-content-center'>
+              <Col xs={12} md={6}>
+                <div className='text-center mb-3'>
+                  <Image
+                    src={
+                      objectUrl || image || 'https://via.placeholder.com/150'
+                    }
+                    alt='Profile'
+                    roundedCircle
+                    fluid
+                    style={{
+                      width: '150px',
+                      height: '150px',
+                      objectFit: 'cover',
+                      color: '#1EEC73'
+                    }}
+                    className='mb-3'
                   />
-                ) : (
-                  <p> {bio} </p>
-                )}{' '}
-              </div>
-              <div className='mt-3 text-center'>
-                {' '}
-                {isEditing ? (
-                  <Button variant='success' onClick={handleSave}>
-                    Save Changes{' '}
-                  </Button>
-                ) : (
-                  <Button variant='primary' onClick={handleEdit}>
-                    Edit Profile{' '}
-                  </Button>
-                )}{' '}
-              </div>
-              {/* Modal for image upload */}{' '}
-              <Modal show={showModal} onHide={handleModalClose}>
-                <Modal.Header closeButton>
-                  <Modal.Title> Upload New Profile Picture </Modal.Title>{' '}
-                </Modal.Header>{' '}
-                <Modal.Body>
-                  <Form>
-                    <Form.Group controlId='formFile'>
-                      <Form.Label> Select an image </Form.Label>{' '}
-                      <Form.Control type='file' onChange={handleImageChange} />{' '}
-                    </Form.Group>{' '}
-                  </Form>{' '}
-                </Modal.Body>{' '}
-                <Modal.Footer>
+                  <br />
                   <Button
                     variant='secondary'
-                    onClick={() => setShowModal(false)}
+                    onClick={() => setShowModal(true)}
                   >
-                    Close{' '}
+                    Change Picture{' '}
                   </Button>{' '}
-                </Modal.Footer>{' '}
-              </Modal>{' '}
-            </Col>{' '}
-          </Row>{' '}
-        </Container>
+                </div>
+                <div className='mt-3 text-center'>
+                  {' '}
+                  {isEditing ? (
+                    <Form.Control
+                      as='textarea'
+                      rows={3}
+                      value={newBio}
+                      onChange={(e) => setNewBio(e.target.value)}
+                    />
+                  ) : (
+                    <p> {bio} </p>
+                  )}{' '}
+                </div>
+                <div className='mt-3 text-center'>
+                  {' '}
+                  {isEditing ? (
+                    <Button variant='success' onClick={handleSave}>
+                      Save Changes{' '}
+                    </Button>
+                  ) : (
+                    <Button variant='success' onClick={handleEdit}>
+                      Edit Profile{' '}
+                    </Button>
+                  )}{' '}
+                </div>
+                {/* Modal for image upload */}{' '}
+                <Modal show={showModal} onHide={handleModalClose}>
+                  <Modal.Header closeButton>
+                    <Modal.Title> Upload New Profile Picture </Modal.Title>{' '}
+                  </Modal.Header>{' '}
+                  <Modal.Body>
+                    <Form>
+                      <Form.Group controlId='formFile'>
+                        <Form.Label> Select an image </Form.Label>{' '}
+                        <Form.Control
+                          type='file'
+                          onChange={handleImageChange}
+                        />{' '}
+                      </Form.Group>{' '}
+                    </Form>{' '}
+                  </Modal.Body>{' '}
+                  <Modal.Footer>
+                    <Button
+                      variant='secondary'
+                      onClick={() => setShowModal(false)}
+                    >
+                      Close{' '}
+                    </Button>{' '}
+                  </Modal.Footer>{' '}
+                </Modal>{' '}
+              </Col>{' '}
+            </Row>{' '}
+          </Container>
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 
