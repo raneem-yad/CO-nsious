@@ -1,14 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.1953b7aa.css",
-    "main.js": "/static/js/main.6958ef07.js",
+    "main.css": "/static/css/main.06163dec.css",
+    "main.js": "/static/js/main.e0c4b05f.js",
     "static/media/_Logo_CO2nscious.webp": "/static/media/_Logo_CO2nscious.ae812cd74bf943db905c.webp",
+    "static/media/badge_energy.webp": "/static/media/badge_energy.7fc6b51397429245fd1e.webp",
+    "static/media/badge_transportation.webp": "/static/media/badge_transportation.15c17b590cd7a943859c.webp",
+    "static/media/badge_waste.webp": "/static/media/badge_waste.de5f247cac1a9e9ad5f9.webp",
     "index.html": "/index.html",
-    "main.1953b7aa.css.map": "/static/css/main.1953b7aa.css.map",
-    "main.6958ef07.js.map": "/static/js/main.6958ef07.js.map"
+    "main.06163dec.css.map": "/static/css/main.06163dec.css.map",
+    "main.e0c4b05f.js.map": "/static/js/main.e0c4b05f.js.map"
   },
   "entrypoints": [
-    "static/css/main.1953b7aa.css",
-    "static/js/main.6958ef07.js"
+    "static/css/main.06163dec.css",
+    "static/js/main.e0c4b05f.js"
   ]
 }
