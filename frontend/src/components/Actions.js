@@ -16,21 +16,21 @@ const Actions = () => {
       title: 'Transport',
       image:
         'https://competition-policy.ec.europa.eu/sites/default/files/styles/oe_theme_medium_no_crop/public/2024-08/Transport%20Image%20Adobe%20Stock%20604419486.jpeg?itok=f_K2qQZA',
-      text: 'Some quick example text to build on the card title and make up the bulk of the card content.',
+      text: 'Empower your daily commute with CO₂nscious. Log trips by bike, walking, carpool, or public transport to track your impact, earn rewards, and reduce emissions—all while staying connected to your company"s sustainability goals..',
       onClick: () => alert('Transport')
     },
     {
       title: 'Waste',
       image:
         'https://img.nmcdn.io/e1/w:1800,h:1600,v:1/cpm/wp-content/uploads/2024/05/The-Moral-Imperative-of-Responsible-Waste-Managements.png?s=7f77bc31',
-      text: 'Some quick example text to build on the card title and make up the bulk of the card content.',
+      text: 'Manage waste more effectively with our integrated Recycling Buddy, powered by AI insights. Get personalized recycling tips and actionable advice to reduce waste, helping your company and community stay eco-conscious..',
       onClick: () => alert('Waste')
     },
     {
       title: 'Energy',
       image:
         'https://arayara.org/wp-content/uploads/2023/08/DreamShaper_v7_renewable_energy_industry_making_big_money_0-1.jpg',
-      text: 'Some quick example text to build on the card title and make up the bulk of the card content.',
+      text: 'Make smarter energy decisions with AI-powered recommendations. From optimizing heating efficiency to exploring green energy solutions, CO₂nscious helps both individuals and organizations cut energy costs and emissions..',
       onClick: () => alert('Energy')
     }
   ]
@@ -40,21 +40,21 @@ const Actions = () => {
       title: 'Public Transport',
       image:
         'https://www.irishtimes.com/polopoly_fs/1.4505336.1614319141!/image/image.jpg_gen/derivatives/landscape_620/image.jpg',
-      text: 'Some quick example text to build on the card title and make up the bulk of the card content.',
+      text: 'Choose eco-friendly transit options like buses, trains, or trams. Log your trips to earn rewards and reduce emissions, contributing to a more sustainable commute. Every journey matters in the fight for cleaner air and a healthier planet..',
       onClick: () => alert('Public Transport')
     },
     {
       title: 'Cycling',
       image:
         'https://www.bikecitizens.net/wp-content/uploads/2024/03/2024-03-07-14_07_20-Window.png',
-      text: 'Some quick example text to build on the card title and make up the bulk of the card content.',
+      text: 'edal your way to sustainability! Track your bike commutes with CO₂nscious to reduce your carbon footprint, stay active, and earn badges like "Bike Hero." Cycling is good for you and even better for the environment..',
       onClick: () => alert('Cycling')
     },
     {
       title: 'Walking',
       image:
         'https://www.irishtimes.com/polopoly_fs/1.4505336.1614319141!/image/image.jpg_gen/derivatives/landscape_620/image.jpg',
-      text: 'Some quick example text to build on the card title and make up the bulk of the card content.',
+      text: 'Take steps toward a greener future! Log your walking commutes to earn points and achieve badges like "Walking Wonder." Walking not only reduces emissions but also boosts your health and well-being..',
       onClick: () => alert('Walking')
     }
   ]
