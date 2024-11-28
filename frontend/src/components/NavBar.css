@@ -1,0 +1,20 @@
+
+.Logo{
+    height: 50px;
+}
+
+.LogoText {
+    color: ##014751;
+    font-family: 'Inter';
+}
+
+nav .navbar-nav li a{
+    color: #014751 !important;
+    }
+
+/* Underline and style the active link */
+.nav-link.active-link {
+    text-decoration: underline;
+    font-weight: bold;
+    color: #0056b3; /* Optional: Adjust color for emphasis */
+  }

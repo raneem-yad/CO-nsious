@@ -1,0 +1,10 @@
+build:
+  languages:
+    - python
+  scripts:
+    - cd backend && pip3 install -r requirements.txt
+release:
+  command:
+    - cd backend && python manage.py migrate
+run:
+  web: cd backend && gunicorn conscious_backend.wsgi

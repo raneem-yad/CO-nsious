@@ -1,13 +1,9 @@
 import axios from 'axios';
 
-const domainApi = window.document.location.href.includes('localhost') ? 'http://localhost:8000' : 'https://herokuapp.com:8000';
+export const tokenAuth = process.env.REACT_APP_API_TOKEN;
+const domainApi = window.document.location.href.includes('localhost') ? 'http://localhost:8000' : 'https://co2nsciousapp-8e3344a058b5.herokuapp.com';
 
-// TODO: // Add your admin user credentials here to login automatically
-const adminUserSecretCredentials = {
-    username: '',
-    email: '',
-    password: '',
-};
+// console.log('tokenAuth:', tokenAuth);
 
 export const handleLogout = async () => {
     try {
@@ -15,23 +11,12 @@ export const handleLogout = async () => {
       localStorage.removeItem('authToken'); // Clear token
     //   alert('Logged out successfully!');
     } catch (err) {
-      alert('Logout failed.');
+      // console.error('Logout failed.');
     }
-  };
-
-export const temporaryLogin = async () => {
-    try {
-        const response = await axios.post(`${domainApi}/dj-rest-auth/login/`, adminUserSecretCredentials);
-        const { key } = response.data;
-        localStorage.setItem
-            ('authToken', key);
-    } catch (error) {
-        console.error('Failed to login with temporary credentials:', error);
-    }
-}
-
+};
+  
 const API = axios.create({
-    baseURL: `${domainApi}/dj-rest-auth`, 
+    baseURL: `${domainApi}`, 
 });
 
 // Add an interceptor to include tokens in requests
