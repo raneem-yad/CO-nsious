@@ -5,4 +5,3 @@ from .models import Category
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('name', 'description')
 
-# Register your models here.

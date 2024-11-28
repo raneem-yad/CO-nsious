@@ -14,7 +14,7 @@ class Badge(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     image_url = models.URLField(max_length=200)
     description = models.TextField()
-    creator = models.ForeignKey(User, on_delete=models.CASCADE, default=get_default_user)
+    employee = models.ForeignKey(User, on_delete=models.CASCADE, default=get_default_user)
     actions_required = models.PositiveIntegerField()
 
     def __str__(self):
