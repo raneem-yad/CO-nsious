@@ -1,34 +1,63 @@
 import React, { useEffect, useState } from 'react'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
-import Dropdown from 'react-bootstrap/Dropdown'
+import Badge from 'react-bootstrap/Badge'
+import ListGroup from 'react-bootstrap/ListGroup'
 import API from '../utils/api'
-import './Actions.css'
-import { Navigate } from 'react-router-dom'
 import CheckPath from './utils/CheckPath'
-
-const getMeasures = async () => {
-  try {
-    const response = await API.get('/measures/', {})
-    console.log(response.data)
-    return response.data
-  } catch (err) {
-    // setError('Login failed. Check your credentials.')
-    console.error('Failed to fetch measures:', err)
-  }
-}
+import './Actions.css'
 
 const Actions = () => {
   const [action, setAction] = useState('')
+  const [categories, setCategories] = useState([])
+  const [measures, setMeasures] = useState([])
+  const [activeMeasures, setActiveMeasures] = useState([])
+  const [activeAction, setActiveAction] = useState(null)
+  const [activeMeasure, setActiveMeasure] = useState(0)
+
+  let totalMeasures = []
 
   useEffect(() => {
-    const fetchMeasures = async () => {
+    const fetchcategories = async () => {
       console.log('Action:', action)
-      const measures = await getMeasures()
-      console.log('Measures:', measures)
+      const categoriesResp = await API.get('/category/', {})
+      setCategories(categoriesResp.data.results)
+      console.log('categories:', categoriesResp)
+
+      //TODO: fetch all measures in a while loop
+
+      let resp = []
+      resp = await API.get('/measures/?page=1', {})
+      console.log('resp1:', resp.data.results)
+      totalMeasures = [...totalMeasures, ...resp.data.results]
+      resp = await API.get('/measures/?page=2', {})
+      console.log('resp2:', resp.data.results)
+      totalMeasures = [...totalMeasures, ...resp.data.results]
+      totalMeasures = [...new Set(totalMeasures)]
+
+      setMeasures(totalMeasures)
+      console.log('measures:', totalMeasures)
     }
-    fetchMeasures()
-  }, [action])
+    fetchcategories()
+  }, [activeAction])
+
+  const uniqueCards = activeMeasures.filter(
+    (card, index, self) => index === self.findIndex((t) => t.name === card.name)
+  )
+
+  const setActualAction = (action) => {
+    setActiveAction(action.id)
+    setActiveMeasure(action.points)
+    console.log('Active action:', action.name, action.points, action.id)
+  }
+  const setActionValues = (actionStr, actionId) => {
+    setActiveAction(null)
+    setAction(actionStr)
+    setActiveMeasures(
+      measures.filter((measure) => measure.category === actionId)
+    )
+    console.log('Active measures:', actionStr, actionId)
+  }
 
   const cards = [
     {
@@ -93,27 +122,27 @@ const Actions = () => {
 
   return (
     <>
-      <CheckPath needToBeLogged={true}/>
+      <CheckPath needToBeLogged={true} />
       <div className='auth-wrapper'>
         <div className='auth-inner' style={{ width: '100%' }}>
           <div className='card-grid'>
-            {cards.map((card, index) => (
+            {categories.map((card, index) => (
               <Card
                 key={index}
                 style={{ cursor: 'pointer' }}
-                onClick={() => setAction(card.title)}
+                onClick={() => setActionValues(card.name, card.id)}
               >
                 <div className='card-image-wrapper'>
                   <Card.Img
                     variant='top'
-                    src={card.image}
-                    alt={card.title}
+                    src={cards[index].image}
+                    alt={card.name}
                     className='card-image'
                   />
                 </div>
                 <Card.Body>
-                  <Card.Title>{card.title}</Card.Title>
-                  <Card.Text>{card.text}</Card.Text>
+                  <Card.Title>{card.name}</Card.Title>
+                  <Card.Text>{card.description}</Card.Text>
                 </Card.Body>
               </Card>
             ))}
@@ -121,21 +150,32 @@ const Actions = () => {
 
           {action && (
             <div style={{ textAlign: 'center' }}>
-              <Dropdown style={{ textAlign: 'center' }}>
-                <Dropdown.Toggle variant='success' id='dropdown-basic'>
-                  {action}
-                </Dropdown.Toggle>
-
-                <Dropdown.Menu>
-                  {handleAction(action).map((card, index) => (
-                    <Dropdown.Item key={index} onClick={card.onClick}>
-                      {card.title}
-                    </Dropdown.Item>
+              <h3>{action}</h3>
+              <ListGroup as='ol' numbered>
+                <div>
+                  {uniqueCards.map((card, index) => (
+                    <ListGroup.Item
+                      as='li'
+                      className='d-flex justify-content-between align-items-start'
+                      onClick={() => setActualAction(card)}
+                      style={{
+                        backgroundColor:
+                          card.id === activeAction ? 'lightgrey' : 'white'
+                      }}
+                      key={card.id} // Es importante agregar una key única cuando renderizas listas en React
+                    >
+                      <div className='ms-2 me-auto'>
+                        <div className='fw-bold'>{card.name}</div>
+                      </div>
+                      <Badge bg='primary' pill>
+                        {card.points}
+                      </Badge>
+                    </ListGroup.Item>
                   ))}
-                </Dropdown.Menu>
-              </Dropdown>
+                </div>
+              </ListGroup>
               <br />
-              <Button variant='success'>Log action</Button>
+              <Button onClick={() => activeAction && alert("Log saved!")} variant='success'>Log action</Button>
             </div>
           )}
         </div>
